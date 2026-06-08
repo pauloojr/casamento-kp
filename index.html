@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karen & Paulo Júnior | K&P</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+      background: #140d0f;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(20, 13, 15, 0.48), rgba(20, 13, 15, 0.72)),
+        url("assets/casal.png") center/cover no-repeat;
+      z-index: -3;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(255, 192, 203, 0.28), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(212, 175, 55, 0.32), transparent 35%);
+      z-index: -2;
+    }
+
+    .sparkles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
+        radial-gradient(circle, rgba(212,175,55,0.65) 1px, transparent 1px);
+      background-size: 90px 90px, 140px 140px;
+      opacity: 0.28;
+      animation: shine 10s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes shine {
+      from { background-position: 0 0, 0 0; }
+      to { background-position: 180px 180px, -140px 140px; }
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 35px 18px;
+      text-align: center;
+    }
+
+    .glass-card {
+      width: 100%;
+      max-width: 1050px;
+      padding: 45px 32px;
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.13);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card::before {
+      content: "K&P";
+      position: absolute;
+      top: 18px;
+      right: 28px;
+      font-family: "Great Vibes", cursive;
+      font-size: 2.6rem;
+      color: rgba(255, 230, 170, 0.55);
+    }
+
+    .photo-frame {
+      width: 210px;
+      height: 210px;
+      margin: 0 auto 22px;
+      border-radius: 50%;
+      padding: 7px;
+      background: linear-gradient(135deg, #fff6d8, #d4af37, #f8c8dc);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid rgba(255,255,255,0.85);
+    }
+
+    h1 {
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(4rem, 10vw, 7.8rem);
+      font-weight: 400;
+      color: #fff6d8;
+      text-shadow: 0 5px 20px rgba(0,0,0,0.35);
+      line-height: 1;
+    }
+
+    .subtitle {
+      margin-top: 12px;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: #ffe8ef;
+      letter-spacing: 1px;
+    }
+
+    .date {
+      display: inline-block;
+      margin: 28px 0 30px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(212, 175, 55, 0.65);
+      color: #fff6d8;
+      font-family: "Playfair Display", serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin: 0 auto 28px;
+    }
+
+    .time-box {
+      padding: 24px 12px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), 0 12px 30px rgba(0,0,0,0.22);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .time-box:nth-child(2) { animation-delay: .18s; }
+    .time-box:nth-child(3) { animation-delay: .36s; }
+    .time-box:nth-child(4) { animation-delay: .54s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+
+    .time-box span {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 700;
+      color: #ffd86b;
+      transition: transform .25s ease, color .25s ease;
+    }
+
+    .time-box p {
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: .82rem;
+      margin-top: 4px;
+    }
+
+    .pulse {
+      transform: scale(1.12);
+      color: #fff6d8 !important;
+    }
+
+    .music-control {
+      margin: 20px auto 24px;
+    }
+
+    .music-control button {
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 13px 24px;
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      color: #6b4f1d;
+      background: linear-gradient(135deg, #fff6d8, #d4af37);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    footer {
+      color: #ffe8ef;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 760px) {
+      body::before {
+        background-position: center top;
+      }
+
+      .glass-card {
+        padding: 32px 18px;
+        border-radius: 28px;
+      }
+
+      .photo-frame {
+        width: 165px;
+        height: 165px;
+      }
+
+      .countdown {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 13px;
+      }
+
+      .time-box {
+        padding: 20px 8px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .countdown {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sparkles"></div>
+
+  <main class="hero">
+    <section class="glass-card">
+      <div class="photo-frame">
+        <img src="assets/casal.png" alt="Foto do casal Karen e Paulo Júnior">
+      </div>
+
+      <h1>Karen & Paulo Júnior</h1>
+      <p class="subtitle">K&P — Nosso casamento está chegando</p>
+
+      <div class="date">07 de agosto de 2027</div>
+
+      <div class="countdown">
+        <div class="time-box"><span id="days">00</span><p>Dias</p></div>
+        <div class="time-box"><span id="hours">00</span><p>Horas</p></div>
+        <div class="time-box"><span id="minutes">00</span><p>Minutos</p></div>
+        <div class="time-box"><span id="seconds">00</span><p>Segundos</p></div>
+      </div>
+
+      <div class="music-control">
+        <button id="musicBtn">▶ Tocar música romântica</button>
+      </div>
+
+      <audio id="music" loop>
+        <!-- Coloque sua música na pasta assets com o nome musica.mp3 -->
+        <source src="assets/musica.mp3" type="audio/mpeg">
+      </audio>
+
+      <footer>“Com amor, Karen & Paulo Júnior”</footer>
+    </section>
+  </main>
+
+  <script>
+    const weddingDate = new Date("2027-08-07T00:00:00").getTime();
+
+    const elements = {
+      days: document.getElementById("days"),
+      hours: document.getElementById("hours"),
+      minutes: document.getElementById("minutes"),
+      seconds: document.getElementById("seconds")
+    };
+
+    function pulse(element) {
+      element.classList.add("pulse");
+      setTimeout(() => element.classList.remove("pulse"), 250);
+    }
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance <= 0) {
+        Object.values(elements).forEach(el => el.textContent = "00");
+        return;
+      }
+
+      const values = {
+        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((distance / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((distance / (1000 * 60)) % 60),
+        seconds: Math.floor((distance / 1000) % 60)
+      };
+
+      Object.entries(values).forEach(([key, value]) => {
+        const formatted = String(value).padStart(2, "0");
+        if (elements[key].textContent !== formatted) {
+          elements[key].textContent = formatted;
+          pulse(elements[key]);
+        }
+      });
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    const music = document.getElementById("music");
+    const musicBtn = document.getElementById("musicBtn");
+
+    musicBtn.addEventListener("click", async () => {
+      try {
+        if (music.paused) {
+          await music.play();
+          musicBtn.textContent = "⏸ Pausar música";
+        } else {
+          music.pause();
+          musicBtn.textContent = "▶ Tocar música romântica";
+        }
+      } catch (error) {
+        alert("Adicione um arquivo chamado musica.mp3 dentro da pasta assets.");
+      }
+    });
+  </script>
+</body>
+</html>
