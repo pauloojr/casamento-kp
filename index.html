@@ -268,15 +268,6 @@
         <div class="time-box"><span id="seconds">00</span><p>Segundos</p></div>
       </div>
 
-      <div class="music-control">
-        <button id="musicBtn">▶ Tocar música</button>
-      </div>
-
-      <audio id="music" loop>
-        <!-- Coloque sua música na pasta assets com o nome musica.mp3 -->
-        <source src="assets/musica.mp3" type="audio/mpeg">
-      </audio>
-
       <footer>Pra sempre!</footer>
     </section>
   </main>
@@ -324,21 +315,9 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    const music = document.getElementById("music");
-    const musicBtn = document.getElementById("musicBtn");
 
-    musicBtn.addEventListener("click", async () => {
-      try {
-        if (music.paused) {
-          await music.play();
-          musicBtn.textContent = "⏸ Pausar música";
-        } else {
-          music.pause();
-          musicBtn.textContent = "▶ Tocar música romântica";
-        }
-      } catch (error) {
-        alert("Adicione um arquivo chamado musica.mp3 dentro da pasta assets.");
-      }
+
+
     });
   </script>
 </body>
