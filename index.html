@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>K&P | Karen & Paulo </title>
+  <title>K&P | Karen & Paulo</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -12,10 +12,6 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     body {
@@ -31,7 +27,7 @@
       position: fixed;
       inset: 0;
       background:
-        linear-gradient(rgba(20, 13, 15, 0.48), rgba(20, 13, 15, 0.72)),
+        linear-gradient(rgba(20, 13, 15, 0.48), rgba(20, 13, 15, 0.75)),
         url("assets/casal.png") center/cover no-repeat;
       z-index: -3;
     }
@@ -134,14 +130,22 @@
     .date {
       display: inline-block;
       margin: 28px 0 30px;
-      padding: 14px 28px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.16);
+      padding: 18px 32px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.15);
       border: 1px solid rgba(212, 175, 55, 0.65);
-      color: #fff6d8;
+      color: #fff;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      backdrop-filter: blur(10px);
+    }
+
+    .date strong {
+      display: block;
+      font-size: 1.5rem;
+      color: #ffd86b;
       font-family: "Playfair Display", serif;
-      font-size: 1.15rem;
-      font-weight: 600;
+      margin-top: 5px;
     }
 
     .countdown {
@@ -252,23 +256,54 @@
 
   <main class="hero">
     <section class="glass-card">
+
       <div class="photo-frame">
-        <img src="assets/casal.png" alt="Foto do casal Karen e Paulo Júnior">
+        <img src="assets/casal.png" alt="Foto do casal Karen e Paulo">
       </div>
 
-      <h1>K&P</h1>
-      <p class="subtitle"> Falta pouco </p>
+      <h1>Karen & Paulo</h1>
 
-      <div class="date">07 de agosto de 2027</div>
+      <p class="subtitle">
+        K&P • Falta pouco para o nosso grande dia ❤️
+      </p>
+
+      <div class="date">
+        💍 Nosso casamento acontecerá em
+        <strong>07 de Agosto de 2027</strong>
+      </div>
 
       <div class="countdown">
-        <div class="time-box"><span id="days">00</span><p>Dias</p></div>
-        <div class="time-box"><span id="hours">00</span><p>Horas</p></div>
-        <div class="time-box"><span id="minutes">00</span><p>Minutos</p></div>
-        <div class="time-box"><span id="seconds">00</span><p>Segundos</p></div>
+        <div class="time-box">
+          <span id="days">00</span>
+          <p>Dias</p>
+        </div>
+
+        <div class="time-box">
+          <span id="hours">00</span>
+          <p>Horas</p>
+        </div>
+
+        <div class="time-box">
+          <span id="minutes">00</span>
+          <p>Minutos</p>
+        </div>
+
+        <div class="time-box">
+          <span id="seconds">00</span>
+          <p>Segundos</p>
+        </div>
       </div>
 
-      <footer>Pra sempre!</footer>
+      <div class="music-control">
+        <button id="musicButton">🎵 Tocar nossa música</button>
+      </div>
+
+      <audio id="bgMusic" loop>
+        <source src="assets/musica.mp3" type="audio/mpeg">
+      </audio>
+
+      <footer>“Pra sempre, Karen & Paulo”</footer>
+
     </section>
   </main>
 
@@ -305,6 +340,7 @@
 
       Object.entries(values).forEach(([key, value]) => {
         const formatted = String(value).padStart(2, "0");
+
         if (elements[key].textContent !== formatted) {
           elements[key].textContent = formatted;
           pulse(elements[key]);
@@ -315,9 +351,12 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
+    const music = document.getElementById("bgMusic");
+    const musicButton = document.getElementById("musicButton");
 
-
-
+    musicButton.addEventListener("click", () => {
+      music.play();
+      musicButton.textContent = "🎶 Música tocando";
     });
   </script>
 </body>
